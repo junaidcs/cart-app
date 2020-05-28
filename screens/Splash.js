@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#2a3b8f',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
