@@ -7,7 +7,6 @@ const secondaryColor = '#ef9807'
 
 const styles = StyleSheet.create({
   buttonCircle: {
-    width: '100%',
     // borderWidth: 1,
     height: 40,
     // backgroundColor: 'rgba(0, 0, 0, .2)',
