@@ -48,44 +48,47 @@ const styles = StyleSheet.create({
   },
 })
 
+// key: Warning: Failed child context type: Invalid child context `virtualizedCell.cellKey`
+// of type `number` supplied to `CellRenderer`, expected `string`
 const slides = [
   {
-    key: 1,
+    key: 'one',
     title: 'Get your car insured, the road \nahead could be bumpy',
     text:
       "Whether it's a brand new model or a used \none, we offer multiple auto insurance covers \ndepending on what you need",
     image: require('./../assets/images/car_ins_min.png'),
-    // backgroundColor: 'red',
+    backgroundColor: 'red',
   },
   {
-    key: 2,
+    key: 'two',
     title: 'Adventures should be \nsafe too',
     text:
       'Whether its a backpacking or a spiritual \njourney, we have a range of travel insurance \npolicies for you to choose from.',
     image: require('./../assets/images/travel_ins_min.png'),
-    // backgroundColor: '#febe29',
+    backgroundColor: '#febe29',
   },
   {
-    key: 3,
+    key: 'three',
     title: "Plan for your family's future.",
     text:
       "Our life insurance policies are designed to \nsafeguard your family's future without the \nhassle of long-term commitments or \nexpensive premiums.",
     image: require('./../assets/images/health_ins_min.png'),
-    // backgroundColor: '#22bcb5',
+    backgroundColor: '#22bcb5',
   },
 ]
 
-export default class App extends React.Component {
-  _renderItem = ({ item }) => {
+const IntroScreen = () => {
+  const _renderItem = ({ item, index }) => {
     return (
-      <View style={styles.slide} key={item.key}>
+      <View style={styles.slide}>
         <Image style={styles.image} source={item.image} />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.text}>{item.text}</Text>
       </View>
     )
   }
-  _renderNextButton = () => {
+
+  const _renderNextButton = () => {
     return (
       <View style={styles.buttonCircle}>
         {/* <Ion
@@ -97,24 +100,25 @@ export default class App extends React.Component {
       </View>
     )
   }
-  _renderDoneButton = () => {
+
+  const _renderDoneButton = () => {
     return (
       <View style={styles.buttonCircle}>
-        {/* <Ion name="md-checkmark" color="rgba(255, 255, 255, .9)" size={24} /> */}
-        <Text style={styles.btnText}>Done</Text>
+        <Text style={styles.btnText}>Start</Text>
       </View>
     )
   }
-  render() {
-    return (
-      <AppIntroSlider
-        data={slides}
-        renderItem={this._renderItem}
-        renderDoneButton={this._renderDoneButton}
-        renderNextButton={this._renderNextButton}
-        activeDotStyle={{ backgroundColor: secondaryColor }}
-        // showSkipButton={true}
-      />
-    )
-  }
+
+  return (
+    <AppIntroSlider
+      data={slides}
+      renderItem={_renderItem}
+      renderDoneButton={_renderDoneButton}
+      renderNextButton={_renderNextButton}
+      activeDotStyle={{ backgroundColor: secondaryColor }}
+      showSkipButton={true}
+    />
+  )
 }
+
+export default IntroScreen
